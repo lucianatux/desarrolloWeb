@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tux - Creación de Páginas web sencillas para todos</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <!-- CSS personalizado -->
+    <style>
+      :root {
+        --primary-color: #de6a4e;
+        --secondary-color: #f4a261;
+        --accent-color: #e9c46a;
+        --third-color: #1677a4;
+        --light-color: #f8f9fa;
+        --dark-color: #29262c;
+        --text-color: #333;
+        --border-radius: 10px;
+        --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text-color);
+        line-height: 1.6;
+        background-color: #dedede;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 700;
+        color: var(--dark-color);
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--primary-color);
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: var(--secondary-color);
+      }
+
+      /* Header y navegación */
+      .navbar {
+        background-color: var(--light-color);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        transition: var(--transition);
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--third-color);
+      }
+
+      .nav-link {
+        font-weight: 600;
+        margin: 0 5px;
+        color: var(--dark-color);
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary-color);
+      }
+
+      /* Hero section */
+      .hero {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 100px 0 80px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%23e9c46a" opacity="0.05"/></svg>');
+        background-size: cover;
+        z-index: -1;
+      }
+
+      .hero-title {
+        font-size: 2.4rem;
+        margin: 20px 0px;
+        color: var(--dark-color);
+      }
+
+      .hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        color: var(--third-color);
+        font-weight: 600;
+      }
+
+      .highlight {
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+
+      /* Secciones */
+      .section-title {
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--accent-color);
+        border-radius: 2px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      /* Tarjetas de servicios */
+      .service-card {
+        border: none;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        height: 100%;
+        background-color: white;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .service-icon {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      /* Tarjetas de presupuestos */
+      .pricing-card {
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        background-color: #eee;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .pricing-header {
+        background-color: var(--secondary-color);
+        color: #333;
+        font-weight: 500;
+        padding: 30px 20px;
+        text-align: center;
+      }
+
+      .pricing-features {
+        padding: 30px;
+      }
+
+      .pricing-features li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .pricing-features li:last-child {
+        border-bottom: none;
+      }
+
+      .price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--dark-color);
+      }
+
+      /* Portfolio */
+      .portfolio-item {
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        margin-bottom: 30px;
+        transition: var(--transition);
+      }
+
+      .portfolio-item:hover {
+        transform: scale(1.02);
+      }
+
+      .portfolio-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      /* Sobre mí */
+      .about-section {
+        background-color: #ddd;
+      }
+
+      .profile-img {
+        max-width: 300px;
+        border-radius: 50%;
+        border: 5px solid var(--accent-color);
+        box-shadow: var(--box-shadow);
+      }
+
+      /* Contacto */
+      .contact-form {
+        background-color: #eee;
+        padding: 40px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+      }
+
+      .form-control {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.25rem rgba(231, 111, 81, 0.25);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 30px 0 30px;
+      }
+
+      .footer-links a {
+        color: #ffffffcc;
+      }
+
+      .footer-links a:hover {
+        color: #ffffff;
+      }
+
+      /* Botones */
+      .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-color);
+        border-color: var(--third-color);
+      }
+
+      .btn-outline-primary {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.1rem;
+        }
+
+        section {
+          padding: 60px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header y navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="bi bi-code-slash me-2"></i>Tux - Desarrollo de Páginas Web
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#inicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#servicios">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#presupuestos">Presupuestos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#portfolio">Ejemplos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sobre-mi">Sobre mi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacto">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sección Hero -->
+    <section id="inicio" class="hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h3 class="hero-title">
+              Páginas web <span class="highlight">personalizadas</span>
+            </h3>
+            <h5>Impulsa tu presencia online y genera más clientes</h5>
+            <p class="hero-subtitle">
+              ¿No eres amigo de la tecnología? ¡No hay problema! Yo me encargo
+              de todo.
+            </p>
+            <p class="lead mb-4">
+              Creo sitios web modernos, rápidos, fáciles de usar, optimizados y
+              sin complicaciones técnicas. Ideal para negocios locales,
+              profesionales independientes y personas que quieren tener
+              presencia en internet sin estrés.
+            </p>
+            <p class="mb-4">
+              Me ocupo de todo:
+              <strong
+                >diseño, fotos optimizadas, hosting, dominio y
+                mantenimiento</strong
+              >. Tú solo preocúpate de tu negocio.
+            </p>
+            <a href="#contacto" class="btn btn-primary me-3"
+              >Solicitar presupuesto</a
+            >
+            <a href="#servicios" class="btn btn-outline-primary"
+              >Ver servicios</a
+            >
+          </div>
+          <div class="col-lg-6">
+            <!-- Imagen representativa - en un caso real sería una imagen optimizada -->
+            <div class="text-center">
+              <img
+                src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHdlYnxlbnwwfHwwfHx8MA%3D%3D"
+                alt="Persona mayor usando una computadora con confianza"
+                class="img-fluid rounded shadow-lg"
+                style="max-height: 500px; object-fit: cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="services">
+      <div class="container">
+        <h2 class="section-title">Mis Servicios</h2>
+        <p class="text-center mb-5">
+          Ofrezco soluciones web completas y personalizadas para cada necesidad.
+        </p>
+
+        <!-- PRIMERA FILA: Servicios principales -->
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="card service-card p-4">
+              <div class="text-center">
+                <i class="bi bi-laptop service-icon"></i>
+                <h3>Páginas Web Informativas</h3>
+              </div>
+              <p>
+                Ideal para mostrar información sobre tu negocio, servicios,
+                horarios y contacto. Diseños limpios y fáciles de navegar.
+              </p>
+              <ul>
+                <li>Hasta 5 secciones</li>
+                <li>Diseño responsive</li>
+                <li>Formulario de contacto</li>
+                <li>Optimización de imágenes</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card service-card p-4">
+              <div class="text-center">
+                <i class="bi bi-shop service-icon"></i>
+                <h3>Sitios para Negocios</h3>
+              </div>
+              <p>
+                Para comercios locales que quieren destacar sus productos,
+                ofertas y llegar a más clientes en Córdoba.
+              </p>
+              <ul>
+                <li>Catálogo de productos/servicios</li>
+                <li>Integración con redes sociales</li>
+                <li>Mapa de ubicación</li>
+                <li>Galería de imágenes</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card service-card p-4">
+              <div class="text-center">
+                <i class="bi bi-person-badge service-icon"></i>
+                <h3>Webs para Profesionales</h3>
+              </div>
+              <p>
+                Perfecto para médicos, abogados, psicólogos y otros
+                profesionales que quieren una presencia online profesional.
+              </p>
+              <ul>
+                <li>Diseño corporativo</li>
+                <li>Agenda de turnos online</li>
+                <li>Sección de currículum</li>
+                <li>Blog integrado</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEGUNDA FILA: Servicios técnicos y de optimización -->
+        <div class="row mt-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="card service-card p-4">
+              <div class="text-center">
+                <i class="bi bi-camera service-icon"></i>
+                <h3>Optimización de Imágenes</h3>
+              </div>
+              <p>
+                ¿Tienes fotos de tu negocio pero pesan mucho? Las optimizo para
+                que se vean bien y carguen rápido.
+              </p>
+              <ul>
+                <li>Redimensionamiento profesional</li>
+                <li>Compresión sin pérdida de calidad</li>
+                <li>Formato web adecuado</li>
+                <li>Hasta 30 imágenes por sitio</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card service-card p-4">
+              <div class="text-center">
+                <i class="bi bi-search service-icon"></i>
+                <h3>Optimización SEO</h3>
+              </div>
+              <p>
+                Optimización técnica y de contenido para mejorar el
+                posicionamiento en Google y atraer más clientes.
+              </p>
+              <ul>
+                <li>Keywords relevantes</li>
+                <li>Meta descripciones</li>
+                <li>Estructura SEO amigable</li>
+                <li>Mejora de velocidad</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card service-card p-4">
+              <div class="text-center">
+                <i class="bi bi-phone service-icon"></i>
+                <h3>Diseño Responsive</h3>
+              </div>
+              <p>
+                Tu sitio web se verá perfecto en cualquier dispositivo:
+                celulares, tablets y computadoras.
+              </p>
+              <ul>
+                <li>Adaptación a móviles</li>
+                <li>Experiencia de usuario óptima</li>
+                <li>Navegación intuitiva</li>
+                <li>Botones de tamaño adecuado</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- TERCERA FILA: Servicios de soporte y gestión -->
+        <div class="row mt-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="card service-card p-4">
+              <div class="text-center">
+                <i class="bi bi-hdd-stack service-icon"></i>
+                <h3>Hosting y Dominio</h3>
+              </div>
+              <p>
+                Te ayudo a conseguir hosting confiable y un dominio apropiado
+                para tu negocio. Sin letra pequeña ni sorpresas.
+              </p>
+              <ul>
+                <li>Búsqueda de dominio disponible</li>
+                <li>Configuración de correos</li>
+                <li>Certificado SSL (sitio seguro)</li>
+                <li>Backup mensual</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card service-card p-4">
+              <div class="text-center">
+                <i class="bi bi-tools service-icon"></i>
+                <h3>Mantenimiento Web</h3>
+              </div>
+              <p>
+                ¿No quieres preocuparte por actualizaciones? Ofrezco
+                mantenimiento mensual para que tu sitio siempre funcione bien.
+              </p>
+              <ul>
+                <li>Actualizaciones de seguridad</li>
+                <li>Copias de seguridad</li>
+                <li>Monitoreo del sitio</li>
+                <li>Soporte por WhatsApp</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="card service-card p-4">
+              <div class="text-center">
+                <i class="bi bi-pencil-square service-icon"></i>
+                <h3>Rediseño Web</h3>
+              </div>
+              <p>
+                ¿Ya tienes un sitio web pero se ve viejo? Lo modernizo para
+                mejorar su apariencia y funcionalidad.
+              </p>
+              <ul>
+                <li>Actualización de diseño</li>
+                <li>Mejora de rendimiento</li>
+                <li>Migración de contenido</li>
+                <li>Capacitación básica</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Presupuestos -->
+    <section id="presupuestos" class="pricing bg-light">
+      <div class="container">
+        <h2 class="section-title">Presupuestos</h2>
+        <p class="text-center mb-5">
+          Precios transparentes sin sorpresas. Todo incluido.
+        </p>
+
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h3>Básico</h3>
+                <div class="price">$50.000</div>
+                <p>Pago único</p>
+              </div>
+              <div class="pricing-features">
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Sitio web de hasta 5 secciones
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Diseño responsive
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Formulario de contacto
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Optimización de 15 imágenes
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Configuración inicial de hosting
+                  </li>
+                  <li>
+                    <i class="bi bi-x-circle text-secondary me-2"></i> Sin
+                    mantenimiento incluido
+                  </li>
+                  <li>
+                    <i class="bi bi-x-circle text-secondary me-2"></i> Sin
+                    dominio incluido
+                  </li>
+                </ul>
+                <div class="text-center mt-4">
+                  <a href="#contacto" class="btn btn-outline-primary"
+                    >Solicitar este plan</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="pricing-card" style="transform: scale(1.05)">
+              <div
+                class="pricing-header"
+                style="background-color: var(--primary-color)"
+              >
+                <h3>Completo</h3>
+                <div class="price">$75.000</div>
+                <p>Pago único + mantenimiento opcional</p>
+                <span class="badge bg-secondary mt-2 text-light"
+                  >Más Popular</span
+                >
+              </div>
+              <div class="pricing-features">
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Todo lo del plan Básico
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Dominio por 1 año
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Hosting por 1 año
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Hasta 30 imágenes optimizadas
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Integración con redes sociales
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    SEO básico
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Mapa de ubicación Google Maps
+                  </li>
+                </ul>
+                <div class="text-center mt-4">
+                  <a href="#contacto" class="btn btn-primary"
+                    >Solicitar este plan</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h3>Personalizado</h3>
+                <div class="price">Consultar</div>
+                <p>Para necesidades específicas</p>
+              </div>
+              <div class="pricing-features">
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Reunión personalizada
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Análisis de necesidades
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Presupuesto detallado
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Diseño a medida
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Funcionalidades especiales
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Mantenimiento mensual
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Entrenamiento personalizado
+                  </li>
+                </ul>
+                <div class="text-center mt-4">
+                  <a href="#contacto" class="btn btn-outline-primary"
+                    >Solicitar reunión</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--
+        <div class="text-center mt-5">
+          <p class="text-muted">
+            Todos los presupuestos incluyen 3 revisiones y ajustes.
+          </p>
+        </div>
+        -->
+      </div>
+    </section>
+
+    <!-- Sección Portfolio -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+        <h2 class="section-title">Ejemplos de páginas web</h2>
+        <!--
+        <p class="text-center mb-5">
+          Ejemplos de páginas web que he creado para clientes de Córdoba.
+        </p>
+-->
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="portfolio-item">
+              <img
+                src="https://plus.unsplash.com/premium_photo-1678739395192-bfdd13322d34?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bmVjZXNlcnxlbnwwfHwwfHx8MA%3D%3D"
+                alt="Página web de carteras"
+                class="portfolio-img"
+              />
+              <div class="p-3">
+                <h4>Tienda de Carteras</h4>
+                <p>
+                  Sitio web con catálogo de productos, horarios y ubicación en
+                  Nueva Córdoba.
+                </p>
+                <a
+                  href="https://lucianatux.github.io/negocioweb/"
+                  class="btn btn-sm btn-outline-primary"
+                  target="_blank"
+                  >Ver sitio web</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="portfolio-item">
+              <img
+                src="https://media.istockphoto.com/id/2170643829/es/foto/fontanero-que-usa-llave-ajustable-para-reparar-la-tuber%C3%ADa-del-fregadero.webp?a=1&b=1&s=612x612&w=0&k=20&c=Fn6vAWyzRUtf5gCN0lUK86Bqoh49lkSdm4aPTTwX4vg="
+                alt="Página web para plomero profesional"
+                class="portfolio-img"
+              />
+              <div class="p-3">
+                <h4>Plomero Gaspar</h4>
+                <p>Web profesional informativa y de contacto.</p>
+                <a
+                  href="#"
+                  class="btn btn-sm btn-outline-primary"
+                  target="_blank"
+                  >Ver sitio web</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="portfolio-item">
+              <img
+                src="https://lucianatux.github.io/Lyra/libreria/catalogolibreria2.jpeg"
+                alt="Distribuidora mayorista"
+                class="portfolio-img"
+              />
+              <div class="p-3">
+                <h4>Distribuidora Mayorista Lyra</h4>
+                <p>
+                  Galería de imágenes por secciones y carrito de compras
+                  integrado a whatsapp
+                </p>
+                <a
+                  href="https://lucianatux.github.io/Lyra/"
+                  class="btn btn-sm btn-outline-primary"
+                  target="_blank"
+                  >Ver sitio web</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Sobre Mí -->
+    <section id="sobre-mi" class="about-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <h2 class="section-title text-start">Sobre Mí</h2>
+            <p class="lead">
+              Hola, soy Luciana, desarrolladora web de Córdoba, Argentina.
+            </p>
+            <p>
+              Mi verdadera pasión es la creación de videojuegos, pero mientras
+              desarrollo mis proyectos, ayudo a personas y pequeños negocios a
+              tener presencia en internet con páginas web modernas, rápidas,
+              fáciles de usar y sin complicaciones técnicas.
+            </p>
+            <p>
+              Entiendo que para muchas personas, especialmente mayores, la
+              tecnología puede ser intimidante. Por eso me encargo de todo el
+              proceso: diseño, desarrollo, optimización de imágenes, búsqueda de
+              hosting y dominio, y mantenimiento.
+            </p>
+            <p>
+              No necesitas saber nada de tecnología. Yo me ocupo de todo y te
+              explico lo que necesites en un lenguaje claro y sencillo.
+            </p>
+            <p>
+              Mis habilidades incluyen: HTML, CSS, JavaScript, Bootstrap, React,
+              Firebase y optimización de imágenes. Pero para páginas web
+              sencillas, uso tecnologías simples que funcionan rápido y son
+              fáciles de mantener.
+            </p>
+          </div>
+          <div class="col-lg-6 text-center">
+            <img
+              src="data:image/jpeg;base64,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"
+              alt="Desarrolladora web sonriendo"
+              class="img-fluid profile-img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contact">
+      <div class="container">
+        <h2 class="section-title">Contactame</h2>
+        <p class="text-center mb-5">
+          ¿Te interesa tener tu página web? Escríbeme y charlamos sin
+          compromiso.
+        </p>
+
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="contact-form">
+              <form
+                id="contactForm"
+                action="https://formspree.io/f/xpwvjoad"
+                method="POST"
+              >
+                <!-- Campos ocultos útiles para Formspree -->
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="Nueva consulta - Soluciones Web Cordobesas"
+                />
+                <input type="text" name="_gotcha" style="display: none" />
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="name" class="form-label"
+                        >Nombre completo</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        name="name"
+                        required
+                      />
+                      <!-- AÑADIDO: name="name" -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="phone" class="form-label"
+                        >Teléfono (WhatsApp)</label
+                      >
+                      <input
+                        type="tel"
+                        class="form-control"
+                        id="phone"
+                        name="phone"
+                        required
+                      />
+                      <!-- AÑADIDO: name="phone" -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label"
+                    >Correo electrónico</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    required
+                  />
+                  <!-- AÑADIDO: name="email" -->
+                </div>
+
+                <div class="mb-3">
+                  <label for="service" class="form-label"
+                    >¿Qué tipo de página necesitas?</label
+                  >
+                  <select
+                    class="form-select"
+                    id="service"
+                    name="service"
+                    required
+                  >
+                    <!-- AÑADIDO: name="service" -->
+                    <option value="" selected disabled>
+                      Selecciona una opción
+                    </option>
+                    <option value="informative">Página web informativa</option>
+                    <option value="business">Sitio para negocio</option>
+                    <option value="professional">Web para profesional</option>
+                    <option value="other">Otro</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="message" class="form-label"
+                    >Cuéntame sobre tu proyecto</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="¿De qué se trata tu negocio? ¿Qué te gustaría incluir en tu página web?"
+                  ></textarea>
+                  <!-- AÑADIDO: name="message" -->
+                </div>
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary btn-lg">
+                    Enviar consulta
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <div class="row mt-5">
+              <div class="col-md-6 text-center mb-4">
+                <i class="bi bi-whatsapp fs-1 text-success mb-3"></i>
+                <h4>WhatsApp</h4>
+                <p>Respuesta rápida</p>
+                <a
+                  href="https://wa.me/5493512309375"
+                  class="btn btn-success"
+                  target="_blank"
+                >
+                  <i class="bi bi-whatsapp me-2"></i> Escribir por WhatsApp
+                </a>
+              </div>
+              <div class="col-md-6 text-center mb-4">
+                <i class="bi bi-envelope fs-1 text-primary mb-3"></i>
+                <h4>Correo electrónico</h4>
+                <p>Para consultas detalladas</p>
+                <a
+                  href="mailto:info@solucioneswebcordobesas.com"
+                  class="btn btn-outline-primary"
+                >
+                  <i class="bi bi-envelope me-2"></i> Enviar correo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-lg-4 p-3"></div>
+
+          <div class="col-lg-4 p-3">
+            <p><i class="bi bi-geo-alt me-2"></i> Córdoba, Argentina</p>
+            <p><i class="bi bi-whatsapp me-2"></i> +54 9 351 2309375</p>
+          </div>
+          <div class="col-lg-4 p-3">
+            <div>
+              <a href="#" class="text-white me-3"
+                ><i class="bi bi-facebook fs-4"></i
+              ></a>
+              <a href="#" class="text-white me-3"
+                ><i class="bi bi-instagram fs-4"></i
+              ></a>
+              <a href="#" class="text-white"
+                ><i class="bi bi-linkedin fs-4"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1)" />
+
+        <div class="text-center">
+          <p>
+            &copy; 2025 Tux - Desarrollo de Páginas Web. Todos los derechos
+            reservados.
+          </p>
+          <p class="small">Desarrollado con ❤️ en Córdoba, Argentina</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript personalizado -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth scrolling para los enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 70,
+                behavior: "smooth",
+              });
+
+              // Cerrar el menú en dispositivos móviles
+              const navbarToggler = document.querySelector(".navbar-toggler");
+              const navbarCollapse = document.querySelector(".navbar-collapse");
+
+              if (
+                navbarToggler &&
+                !navbarToggler.classList.contains("collapsed")
+              ) {
+                navbarToggler.click();
+              }
+            }
+          });
+        });
+
+        // Cambiar estilo de navbar al hacer scroll
+        window.addEventListener("scroll", function () {
+          const navbar = document.querySelector(".navbar");
+          if (window.scrollY > 50) {
+            navbar.style.padding = "10px 0";
+            navbar.style.boxShadow = "0 5px 15px rgba(0, 0, 0, 0.1)";
+          } else {
+            navbar.style.padding = "15px 0";
+            navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+          }
+        });
+
+        // Manejar el envío del formulario CORRECCIÓN COMPLETA
+        document
+          .getElementById("contactForm")
+          .addEventListener("submit", function (e) {
+            // Aquí NO usamos e.preventDefault() para permitir que Formspree procese el envío
+
+            // 1. Primero validamos los campos obligatorios
+            const name = document.getElementById("name").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const email = document.getElementById("email").value.trim();
+
+            if (!name || !phone || !email) {
+              alert(
+                "Por favor completa los campos obligatorios: Nombre, Teléfono y Email."
+              );
+              e.preventDefault(); // Solo prevenimos si hay error de validación
+              return;
+            }
+
+            // 2. Formspree necesita que los campos tengan atributo "name"
+            // Tu HTML ya tiene los campos con id, pero Formspree usa los "name"
+            // Asegúrate de agregar atributos name a tus inputs:
+            // <input type="text" id="name" name="name" required>
+            // <input type="tel" id="phone" name="phone" required>
+            // <input type="email" id="email" name="email" required>
+            // <select id="service" name="service" required>
+            // <textarea id="message" name="message">
+
+            // 3. Opcional: Agregar campos ocultos para Formspree
+            // Puedes agregar estos campos ocultos en tu HTML o crearlos dinámicamente:
+            // <input type="hidden" name="_subject" value="Nueva consulta - Soluciones Web Cordobesas">
+            // <input type="hidden" name="_replyto" value=""> // Se llenará con el email del usuario
+
+            // 4. Mostrar mensaje de "enviando" (opcional pero recomendado)
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML =
+              '<span class="spinner-border spinner-border-sm me-2"></span> Enviando...';
+            submitBtn.disabled = true;
+
+            // 5. Permitir que el formulario se envíe normalmente a Formspree
+            // Formspree manejará la respuesta y redirección
+
+            // 6. Opcional: Agregar un pequeño delay para que el usuario vea el mensaje "enviando"
+            // El formulario se enviará automáticamente después de la validación
+            setTimeout(() => {
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+            }, 2000);
+          });
+
+        // Resaltar enlace activo en la navegación al hacer scroll
+        window.addEventListener("scroll", function () {
+          const sections = document.querySelectorAll("section");
+          const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+          let current = "";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if (scrollY >= sectionTop - 150) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+              link.classList.add("active");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
